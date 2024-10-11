@@ -41,28 +41,28 @@ pub extern fn atan(x: f32) f32;
 pub extern fn atan2(y: f32, x: f32) f32;
 
 /// Returns the sine of angle.
-pub extern fn sin(angle: f32) f32;
+pub extern fn sinf(angle: f32) f32;
 
 /// Returns the tangent of angle.
-pub extern fn tan(angle: f32) f32;
+pub extern fn tanf(angle: f32) f32;
 
 /// Returns the cosine of angle.
-pub extern fn cos(angle: f32) f32;
+pub extern fn cosf(angle: f32) f32;
 
 /// Returns e^x.
-pub extern fn exp(x: f32) f32;
+pub extern fn expf(x: f32) f32;
 
 /// Returns the natural logarithmus of x. Ie. e^log(x) == x.
-pub extern fn log(x: f32) f32;
+pub extern fn logf(x: f32) f32;
 
 /// Returns x^y.
 pub extern fn pow(x: f32, y: f32) f32;
 
 /// Returns x modulo y, ie. x - floor(x / y) * y.
 ///
-/// This means the sign of the result of fmod is the same as y.
+/// This means the sign of the result of fmodf is the same as y.
 ///
-pub extern fn fmod(x: f32, y: f32) f32;
+pub extern fn fmodf(x: f32, y: f32) f32;
 
 // Random
 //
@@ -422,6 +422,10 @@ pub extern fn setCursorPosition(x: i32, y: i32) void;
 // The sampleIndex will start at 0 and increments by 1 for each call.
 // On even indices the function is expected to return a sample value
 // for the left channel, on odd indices for the right channel.
+
+pub fn select(b: bool, x: f32, y: f32) f32 {
+    return if (b) x else y;
+}
 
 /// Triggers a note (1-127) on the given channel (0-3).
 ///
